@@ -24,9 +24,14 @@ const Navbar = () => {
 
     const links = <>
         <li className=" font-black text-xl "><NavLink to="/" >Home</NavLink></li>
-        <li className="font-black text-xl "><NavLink to="/alltouristspot">All Tourists Spot</NavLink></li>
-        <li className="font-black text-xl "><NavLink to="/addtouristspot">Add Tourists Spot</NavLink></li>
-        <li className="font-black text-xl "><NavLink to="/mylist">My List</NavLink></li>
+        <li className="font-black text-xl "><NavLink to="/needvolunteer">Need Volunteer</NavLink></li>
+        <li className="dropdown font-black text-xl ">
+            <Link tabIndex={0} role="" className="">My Profile</Link>
+            <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                <NavLink to='/'>Add Volunteer Post</NavLink>
+                <NavLink>Manage My Post</NavLink>
+            </ul>
+        </li>
         {/* {
             user && <><li className="font-medium text-lg" ><NavLink to="/userprofile">User Profile</NavLink></li></>
         } */}
@@ -56,7 +61,7 @@ const Navbar = () => {
                                 {links}
                             </ul>
                         </div>
-                        <Link to='/' className="btn btn-ghost lg:text-2xl drop-shadow-lg text-black font-black "> Young <br /> Volunteer </Link>
+                        <Link to='/' className="btn btn-ghost lg:text-2xl drop-shadow-lg text-black font-black "> Youth <br /> Volunteer </Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal  px-1">
