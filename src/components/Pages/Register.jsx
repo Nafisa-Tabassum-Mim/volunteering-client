@@ -68,8 +68,8 @@ const Register = () => {
 
     return (
 
-        <div className='flex bg-gradient-to-t from-[#7FFFD4]  to-[#71c4cc] items-center' >
-            <div className="  w-1/3">
+        <div className='flex md:bg-gradient-to-t from-[#7FFFD4]  to-[#71c4cc] justify-center items-center ' >
+            <div className="hidden md:block md:w-1/3 ">
                 <Swiper
                     spaceBetween={30}
                     centeredSlides={true}
@@ -113,7 +113,7 @@ const Register = () => {
                 </Swiper>
 
             </div>
-            <div className='w-2/3 bg-white rounded-l-[70px]'>
+            <div className='md:w-2/3 bg-white md:rounded-l-[70px]'>
                 <div className="flex justify-center mx-4">
                     {/* <Helmet>
                 <title>Register </title>
