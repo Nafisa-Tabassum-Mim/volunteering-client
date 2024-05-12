@@ -1,40 +1,39 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { CiFacebook } from "react-icons/ci";
 import { LuTwitter } from "react-icons/lu";
 import { CiYoutube } from "react-icons/ci";
 import { FaPinterestP } from "react-icons/fa";
 import '../../App.css';
-// import { useContext } from "react";
-// import { AuthContext } from "../firebase/AuthProvider";
+import { useContext } from "react";
+import { AuthContext } from "../firebase/AuthProvider";
+import { IoIosArrowDown } from "react-icons/io";
+
 
 
 const Navbar = () => {
 
-    // const { logOut, user } = useContext(AuthContext)
-    // const location = useLocation()
-    // const navigate = useNavigate()
+    const { logOut, user } = useContext(AuthContext)
+    const location = useLocation()
+    const navigate = useNavigate()
 
-    // const handleLogout = () => {
-    //     logOut()
-    //         .then(() => {
-    //             navigate(location?.state ? location.state : '/')
-    //         })
-    //         .catch()
-    // }
+    const handleLogout = () => {
+        logOut()
+            .then(() => {
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch()
+    }
 
     const links = <>
-        <li className=" font-black text-xl "><NavLink to="/" >Home</NavLink></li>
-        <li className="font-black text-xl "><NavLink to="/needvolunteer">Need Volunteer</NavLink></li>
+        <li className=" font-black text-xl "><NavLink to="/" >Home <IoIosArrowDown /></NavLink></li>
+        <li className="font-black text-xl "><NavLink to="/needvolunteer">Need Volunteer <IoIosArrowDown /></NavLink></li>
         <li className="dropdown font-black text-xl ">
-            <Link tabIndex={0} role="" className="">My Profile</Link>
+            <Link tabIndex={0} role="" className="">My Profile <IoIosArrowDown /></Link>
             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                 <NavLink to='/'>Add Volunteer Post</NavLink>
                 <NavLink>Manage My Post</NavLink>
             </ul>
         </li>
-        {/* {
-            user && <><li className="font-medium text-lg" ><NavLink to="/userprofile">User Profile</NavLink></li></>
-        } */}
     </>
 
     return (
@@ -68,8 +67,27 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <div>
-                        <Link to='/login'>login</Link>
+                    <div className="">
+
+                        {
+                            user ?
+                                (
+                                    <>
+                                        <div tabIndex={0} role="button" data-tip={`${user.displayName}`} className="tooltip tooltip-bottom tooltip-bg-orange-500 z-50 btn btn-ghost btn-circle avatar">
+                                            <div className="w-10 rounded-full">
+                                                <img alt="Tailwind CSS Navbar component" src={user.photoURL} />
+                                            </div>
+                                        </div>
+                                        <button onClick={handleLogout} className="btn bg-green-400 opacity-65 text-white mr-2">Logout</button>
+                                    </>
+
+                                )
+                                :
+                                (<>
+                                    <Link to='/login' className="btn bg-green-400 bg-opacity-60 text-white">Login</Link>
+                                </>
+                                )
+                        }
                     </div>
                 </div>
             </div>

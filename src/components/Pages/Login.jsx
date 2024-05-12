@@ -1,18 +1,57 @@
-import { Link } from 'react-router-dom';
-// import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { SiGithub } from "react-icons/si";
-// import { useContext, useState } from "react";
-// import { AuthContext } from "../firebase/AuthProvider";
-import { ToastContainer } from "react-toastify"
-// import 'react-toastify/dist/ReactToastify.css';
+import { useContext, useState } from "react";
+import { AuthContext } from "../firebase/AuthProvider";
+import { ToastContainer, toast } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
-import { useState } from 'react';
+
 
 
 const Login = () => {
+    const { signIn, setLoading, signInWithGoogle, signWithGithub } = useContext(AuthContext)
+    const location = useLocation()
+    const navigate = useNavigate()
     const [showPass, setshowPass] = useState(false)
+
+    const handleLogin = e => {
+        e.preventDefault()
+        const email = e.target.email.value
+        const password = e.target.password.value
+
+        signIn(email, password)
+            .then(() => {
+                toast.success('You are login now')
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch((error) => {
+                setLoading(false)
+                toast.error("Email or Password is incorrect")
+            })
+    }
+
+    const handleGoogleSign = () => {
+        signInWithGoogle()
+            .then((result) => {
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch((error) => {
+                setLoading(false)
+                toast.error(error.code)
+            })
+    }
+    const handleGithubSign = () => {
+        signWithGithub()
+            .then((result) => {
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch((error) => {
+                setLoading(false)
+                toast.error(error.code)
+            })
+    }
 
 
     return (
@@ -25,7 +64,7 @@ const Login = () => {
                     <img src="https://i.ibb.co/xDTDMT2/istockphoto-1188864563-612x612-1.jpg" alt="" />
                 </div>
                 <div className="card  w-full max-w-md shadow-md shadow-roaming  shadow-green-300 shadow-t-2 my-4 md:my-12">
-                    <form className="card-body">
+                    <form className="card-body" onSubmit={handleLogin}>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -57,9 +96,9 @@ const Login = () => {
                         <div className="flex items-center  justify-center">
                             <div className="border-b border-black w-full"></div>
                             <div className="flex items-center gap-1 relative z-10">
-                                <button className="border border-green-300 rounded-lg p-2 text-[30px]"><FcGoogle /></button>
+                                <button onClick={handleGoogleSign} className="border border-green-300 rounded-lg p-2 text-[30px]"><FcGoogle /></button>
                                 <p className="text-gray-500">or</p>
-                                <button className="border border-green-300 rounded-lg p-2 text-[30px]"><SiGithub /></button>
+                                <button onClick={handleGithubSign} className="border border-green-300 rounded-lg p-2 text-[30px]"><SiGithub /></button>
                             </div>
                             <div className="border-b border-black w-full"></div>
                         </div>
