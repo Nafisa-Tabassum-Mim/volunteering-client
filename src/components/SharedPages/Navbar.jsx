@@ -69,7 +69,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div>
-                        <button>login</button>
+                        <Link to='/login'>login</Link>
                     </div>
                 </div>
             </div>
