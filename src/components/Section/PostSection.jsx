@@ -1,4 +1,5 @@
 import { FaArrowRight } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 
 const PostSection = ({ post }) => {
@@ -13,7 +14,7 @@ const PostSection = ({ post }) => {
                     <div className="bg-white card-body w-[15em] md:w-[350px] rounded-[30px]  mt-[-90px]">
                         <h3 className="text-black md:text-xl font-extrabold font-mono">{post_title}</h3>
                         <h3 className="text-lg">{category}</h3>
-                        <button className="text-lg text-left text-amber-900 flex items-center  gap-2 mt-2">VIEW DETAILS <FaArrowRight /></button>
+                        <Link to={`/${_id}`} className="text-lg text-left text-amber-900 flex items-center  gap-2 mt-2">VIEW DETAILS <FaArrowRight /></Link>
                     </div>
                 </div>
             </div>

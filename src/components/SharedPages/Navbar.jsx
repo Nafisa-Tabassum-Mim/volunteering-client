@@ -30,7 +30,7 @@ const Navbar = () => {
         <li className="dropdown font-black text-xl ">
             <Link tabIndex={0} role="" className="">My Profile <IoIosArrowDown /></Link>
             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                <NavLink to='/'>Add Volunteer Post</NavLink>
+                <NavLink to='/addvolunteer'>Add Volunteer Post</NavLink>
                 <NavLink>Manage My Post</NavLink>
             </ul>
         </li>
