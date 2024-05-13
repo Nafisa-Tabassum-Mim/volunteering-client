@@ -83,6 +83,8 @@ const VolunteerVacancy = () => {
                 if (data.insertedId) {
                     form.reset()
                     toast.success('Your volunteer post is updated now!')
+                    // const remaining = posts.filter(post => post._id === _id);
+                    setPosts(updatePost);
                 }
             })
 
@@ -93,8 +95,8 @@ const VolunteerVacancy = () => {
         <div>
             <div className="overflow-x-auto">
                 {
-                    // posts.length !== 0 ?
-                    posts ?
+                    posts.length !== 0 ?
+                    // posts ?
                         (
                             <>
                                 <table className="table">
@@ -237,9 +239,8 @@ const VolunteerVacancy = () => {
                             </>)
                         :
                         (<div className=" h-[400px] w-full flex flex-col justify-center items-center gap-2">
-                            <p className="text-2xl font-semibold">Your post Data is empty</p>
-                            <p className="text-2xl font-semibold">Add your data <span className="text-green-500">now !</span> </p>
-                            <Link className="btn text-white bg-green-500 ">Add Now !</Link>
+                            <p className="text-2xl font-semibold">Your didn't add any volunteering project</p>
+                            <Link to='/addvolunteer' className="btn text-white bg-green-500 ">Add Now !</Link>
                         </div>)
 
                 }

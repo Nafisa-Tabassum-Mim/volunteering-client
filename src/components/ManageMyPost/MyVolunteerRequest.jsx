@@ -18,13 +18,13 @@ const MyVolunteerRequest = () => {
             text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
+            confirmButtonColor: "green",
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/post/${_id}`, {
+                fetch(`http://localhost:5000/request/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -49,12 +49,12 @@ const MyVolunteerRequest = () => {
         <div>
         <div className="overflow-x-auto">
             {
-                // posts.length !== 0 ?
-                posts ?
+                posts.length !== 0 ?
+                // posts ?
                     (
                         <>
                             <table className="table">
-                                <caption className="text-lg md:text-2xl text-center font-semibold my-4 font-mono">My Volunteer request post</caption>
+                                <caption className="text-lg md:text-2xl text-center font-semibold my-8 font-mono">My Volunteer request post</caption>
 
                                 {/* head */}
                                 <thead>
@@ -83,9 +83,9 @@ const MyVolunteerRequest = () => {
                             </>)
                         :
                         (<div className=" h-[400px] w-full flex flex-col justify-center items-center gap-2">
-                            <p className="text-2xl font-semibold">Your post Data is empty</p>
+                            <p className="text-2xl font-semibold">You didn't apply for any volunteering !</p>
                             <p className="text-2xl font-semibold">Add your data <span className="text-green-500">now !</span> </p>
-                            <Link className="btn text-white bg-green-500 ">Add Now !</Link>
+                            <Link to='/needvolunteer' className="btn text-white bg-green-500 ">Apply Now !</Link>
                         </div>)
 
                 }
