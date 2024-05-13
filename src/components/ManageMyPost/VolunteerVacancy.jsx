@@ -57,6 +57,7 @@ const VolunteerVacancy = () => {
 
     const handleUpdateCard = (e, _id) => {
         e.preventDefault();
+        // setStartDate(deadlinede)
         const form = e.target;
         const thumbnail = form.thumbnail.value;
         const post_title = form.post_title.value;
@@ -96,7 +97,7 @@ const VolunteerVacancy = () => {
             <div className="overflow-x-auto">
                 {
                     posts.length !== 0 ?
-                    // posts ?
+                        // posts ?
                         (
                             <>
                                 <table className="table">
