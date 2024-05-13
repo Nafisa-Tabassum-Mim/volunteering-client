@@ -1,9 +1,11 @@
 import  { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import Swal from "sweetalert2";
+
 
 const MyVolunteerRequest = () => {
     const [posts, setPosts] = useState([])
 
-    
     useEffect(() => {
         fetch('http://localhost:5000/request')
             .then(res => res.json())
@@ -31,7 +33,7 @@ const MyVolunteerRequest = () => {
                         if (data.deletedCount > 0) {
                             Swal.fire(
                                 'Deleted!',
-                                'Your vacancy volunteer post has been deleted.',
+                                'Your volunteering request has been deleted.',
                                 'success'
                             )
                             const remaining = posts.filter(post => post._id !== _id);
@@ -42,7 +44,7 @@ const MyVolunteerRequest = () => {
             }
         })
     };
-    
+
     return (
         <div>
         <div className="overflow-x-auto">
@@ -72,7 +74,7 @@ const MyVolunteerRequest = () => {
                                             <td className="px-2 py-4">
                           
 
-                                            <button onClick={() => handleDelete(post._id)} className="text-green-500 border-green-500 border-2 p-2 rounded-xl hover:bg-red-500">Cancel</button>
+                                            <button onClick={() => handleDelete(post._id)} className="text-green-500 border-green-500 border-2 p-2 rounded-xl hover:bg-red-500 hover:text-white">Cancel</button>
                                                 </td>
                                             </tr>
                                         ))}
