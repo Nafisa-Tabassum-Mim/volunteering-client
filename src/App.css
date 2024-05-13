@@ -1,10 +1,13 @@
 .navbar a.active {
   color: green !important;
   background-color: #e5e7eb04 !important;
-  /* border-color: #64b5f6; */
-  /* border-radius: 10px; */
-  /* border-width: 3px; */
 
+
+}
+.navbar .mybtn:hover {
+  color: green !important;
+  background-color: #e5e7eb04 !important;
+ 
 }
 
 .shadow-roaming {

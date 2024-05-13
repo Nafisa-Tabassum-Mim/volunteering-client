@@ -28,7 +28,7 @@ const Navbar = () => {
         <li className=" font-black text-xl "><NavLink to="/" >Home <IoIosArrowDown /></NavLink></li>
         <li className="font-black text-xl "><NavLink to="/needvolunteer">Need Volunteer <IoIosArrowDown /></NavLink></li>
         <li className="dropdown font-black text-xl ">
-            <Link tabIndex={0} role="" className="">My Profile <IoIosArrowDown /></Link>
+            <button tabIndex={0} role="" className="mybtn">My Profile <IoIosArrowDown /></button>
             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                 <NavLink to='/addvolunteer'>Add Volunteer Post</NavLink>
                 <NavLink to='/managemypost'>Manage My Post</NavLink>
