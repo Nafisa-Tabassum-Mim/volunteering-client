@@ -82,7 +82,7 @@ const MyVolunteerRequest = () => {
                                 </table>
                             </>)
                         :
-                        (<div className=" h-[400px]  w-full flex flex-col justify-center items-center gap-2">
+                        (<div className=" my-12  w-full flex flex-col justify-center items-center gap-2">
                             <p className="text-2xl font-semibold">You didn't apply for any volunteering !</p>
                             <p className="text-2xl font-semibold">Add your data <span className="text-green-500">now !</span> </p>
                             <Link to='/needvolunteer' className="btn text-white bg-green-500 ">Apply Now !</Link>
