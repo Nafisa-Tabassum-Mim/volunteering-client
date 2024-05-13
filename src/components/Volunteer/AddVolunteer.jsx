@@ -116,7 +116,7 @@ const AddVolunteer = () => {
                                     <span className="label-text font-medium text-lg text-[#808000]" >No of Volunteer</span>
                                 </label>
                                 <label className="input-group">
-                                    <input type="text" name="volunteers_needed" placeholder="No of Volunteer" className="input input-bordered w-full" required />
+                                    <input type="number" name="volunteers_needed" placeholder="No of Volunteer" className="input input-bordered w-full" required />
                                 </label>
                             </div>
                         </div>
@@ -139,7 +139,7 @@ const AddVolunteer = () => {
                                     <span className="label-text font-medium text-lg text-[#808000]" >Organizer Name</span>
                                 </label>
                                 <label className="input-group">
-                                    <input type="text" name="organizer_name" placeholder="Organizer Name" defaultValue={user.displayName} className="input input-bordered w-full" readOnly required />
+                                    <input type="text" name="organizer_name" placeholder="Organizer Name" defaultValue={user.displayName} className="input input-bordered w-full"  required />
                                 </label>
                             </div>
                             <div className="form-control md:w-1/2 ">
@@ -147,7 +147,7 @@ const AddVolunteer = () => {
                                     <span className="label-text font-medium text-lg text-[#808000]" >Organizer Email</span>
                                 </label>
                                 <label className="input-group">
-                                    <input type="text" name="organizer_email" placeholder="Organizer Email" defaultValue={user.email} className="input input-bordered w-full" readOnly required />
+                                    <input type="text" name="organizer_email" placeholder="Organizer Email" defaultValue={user.email} className="input input-bordered w-full" required />
                                 </label>
                             </div>
                         </div>

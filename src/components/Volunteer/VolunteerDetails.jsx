@@ -1,5 +1,5 @@
-import { useContext, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../firebase/AuthProvider";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from "react-toastify"
@@ -7,6 +7,8 @@ import { ToastContainer, toast } from "react-toastify"
 
 const VolunteerDetails = () => {
     const post = useLoaderData()
+    console.log(post)
+
     const { thumbnail, post_title, description, category, location, volunteers_needed, deadline, organizer_name, organizer_email } = post
 
     const { user } = useContext(AuthContext)
@@ -144,7 +146,7 @@ const VolunteerDetails = () => {
                                                 <span className="label-text font-medium text-lg text-[#808000]" >No of Volunteer</span>
                                             </label>
                                             <label className="input-group">
-                                                <input type="text" name="volunteers_needed" defaultValue={volunteers_needed} placeholder="No of Volunteer" className="input input-bordered w-full" readOnly />
+                                                <input type="number" name="volunteers_needed" defaultValue={volunteers_needed} placeholder="No of Volunteer" className="input input-bordered w-full" readOnly />
                                             </label>
                                         </div>
                                     </div>

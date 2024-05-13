@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import {
   createBrowserRouter,
-  RouterProvider,
-  useParams,
+  RouterProvider
 } from "react-router-dom";
 import ErrorPage from './components/Pages/ErrorPage';
 import Home from './components/Pages/Home';
@@ -15,6 +14,8 @@ import AuthProvider from './components/firebase/AuthProvider';
 import PrivateRoute from './components/firebase/PrivateRoute';
 import AddVolunteer from './components/Volunteer/AddVolunteer';
 import VolunteerDetails from './components/Volunteer/VolunteerDetails';
+import NeedVolunteer from './components/Volunteer/NeedVolunteer';
+import ManageMyPost from './components/ManageMyPost/ManageMyPost';
 
 
 const router = createBrowserRouter([
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/show')
+        loader: () => fetch('http://localhost:5000/post')
       },
       {
         path: '/login',
@@ -42,8 +43,17 @@ const router = createBrowserRouter([
       },
       {
         path: '/:id',
-        loader:({params})=>fetch(`http://localhost:5000/post/${params.id}`),
+        loader: ({ params }) => fetch(`http://localhost:5000/post/${params.id}`),
         element: <PrivateRoute><VolunteerDetails></VolunteerDetails></PrivateRoute>,
+      },
+      {
+        path: '/needvolunteer',
+        loader: () => fetch('http://localhost:5000/post'),
+        element: <NeedVolunteer></NeedVolunteer>,
+      },
+      {
+        path: '/managemypost',
+        element: <ManageMyPost></ManageMyPost>,
       },
     ]
   }
