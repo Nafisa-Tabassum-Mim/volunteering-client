@@ -2,6 +2,8 @@ import { Link, useLoaderData } from "react-router-dom";
 import Banner from "./Banner";
 import PostSection from "../Section/PostSection";
 import { Helmet } from "react-helmet";
+import Section1 from "./Section1";
+// import Section1 from "./Section";
 
 const Home = () => {
     const posts = useLoaderData()
@@ -31,6 +33,7 @@ const Home = () => {
                 </div>
 
             </section >
+            <Section1></Section1>
         </div>
     );
 };

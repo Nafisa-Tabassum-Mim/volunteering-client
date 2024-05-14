@@ -1,16 +1,18 @@
-import  { useEffect, useState } from 'react';
+import  { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from "sweetalert2";
+import { AuthContext } from '../firebase/AuthProvider';
 
 
 const MyVolunteerRequest = () => {
     const [posts, setPosts] = useState([])
+    const {user} = useContext(AuthContext)
 
     useEffect(() => {
-        fetch('http://localhost:5000/request')
+        fetch(`http://localhost:5000/request?volunteer_email=${user.email}`)
             .then(res => res.json())
             .then((data) => setPosts(data))
-    }, [])
+    }, [user?.email])
 
     const handleDelete = (_id) => {
         Swal.fire({
