@@ -4,6 +4,7 @@ import  { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from 'sweetalert2'
+import { Helmet } from "react-helmet";
 
 
 const AddVolunteer = () => {
@@ -56,6 +57,9 @@ const AddVolunteer = () => {
 
     return (
         <div className='flex justify-center gap-4 flex-col-reverse md:flex-row'>
+                 <Helmet>
+                <title>Add volunteer post</title>
+            </Helmet>
             <div className='relative h-[1200px]'>
                 <img src="https://i.ibb.co/xDTDMT2/istockphoto-1188864563-612x612-1.jpg" alt="" />
             </div>

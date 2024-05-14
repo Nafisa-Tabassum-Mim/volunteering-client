@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
 
 const NeedVolunteer = () => {
@@ -5,6 +6,9 @@ const NeedVolunteer = () => {
     console.log(posts)
     return (
         <div>
+            <Helmet>
+                <title>Need Volunteer</title>
+            </Helmet>
             <p className="text-3xl font-semibold text-center my-8">All needed volunteering <span className="text-[#808000] mr-2">posts</span></p>
 
             {posts.map((post) => (

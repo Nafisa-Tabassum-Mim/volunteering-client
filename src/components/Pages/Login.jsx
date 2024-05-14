@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
+import { Helmet } from "react-helmet";
 
 
 
@@ -56,6 +57,9 @@ const Login = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Login</title>
+            </Helmet>
             <div className="flex justify-center gap-4 flex-col-reverse md:flex-row">
                 {/* <Helmet>
                 <title> Login </title>

@@ -1,6 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Banner from "./Banner";
 import PostSection from "../Section/PostSection";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
     const posts = useLoaderData()
@@ -8,6 +9,9 @@ const Home = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Youth volunteer website</title>
+            </Helmet>
             <Banner></Banner>
 
             <section className="mt-12 md:mt-12 mb-24 bg-gray-800 rounded-tr-[100px] md:rounded-tr-[280px] rounded-br-[80px]">

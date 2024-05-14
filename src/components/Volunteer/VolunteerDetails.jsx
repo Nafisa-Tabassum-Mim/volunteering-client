@@ -3,6 +3,7 @@ import { useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../firebase/AuthProvider";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from "react-toastify"
+import { Helmet } from "react-helmet";
 
 
 const VolunteerDetails = () => {
@@ -55,6 +56,9 @@ const VolunteerDetails = () => {
 
     return (
         <div >
+            <Helmet>
+                <title>Volunteer post details</title>
+            </Helmet>
             <h3 className="text-5xl font-semibold font-serif text-center my-4 mx-2">Yolunteer post details</h3>
             <div className="flex justify-center md:gap-10 my-6 items-center mx-4">
                 <h3 className="text-3xl font-semibold font-mono">

@@ -20,6 +20,7 @@ import '../../styles.css'
 
 // import required modules
 import { EffectCoverflow, Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Helmet } from "react-helmet";
 
 const Register = () => {
 
@@ -69,6 +70,9 @@ const Register = () => {
     return (
 
         <div className='flex md:bg-gradient-to-t from-[#7FFFD4]  to-[#71c4cc] justify-center items-center ' >
+            <Helmet>
+                <title>Register</title>
+            </Helmet>
             <div className="hidden md:block md:w-1/3 ">
                 <Swiper
                     spaceBetween={30}
