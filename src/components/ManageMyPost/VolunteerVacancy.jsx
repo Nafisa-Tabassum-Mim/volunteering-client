@@ -27,7 +27,7 @@ const VolunteerVacancy = () => {
             text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
+            confirmButtonColor: 'green',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
@@ -240,7 +240,7 @@ const VolunteerVacancy = () => {
                             </>)
                         :
                         (<div className=" my-4 w-full flex flex-col justify-center items-center gap-2">
-                            <p className="text-2xl font-semibold">Your didn't add any volunteering project</p>
+                            <p className="text-2xl font-semibold text-center">Your didn't add any volunteering project</p>
                             <Link to='/addvolunteer' className="btn text-white bg-green-500 ">Add Now !</Link>
                         </div>)
 

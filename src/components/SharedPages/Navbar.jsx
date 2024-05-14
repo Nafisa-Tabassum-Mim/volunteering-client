@@ -67,7 +67,7 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <div className="">
+                    <div className="navbar-end">
 
                         {
                             user ?
