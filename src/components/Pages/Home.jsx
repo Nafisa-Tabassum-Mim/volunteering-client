@@ -3,7 +3,7 @@ import Banner from "./Banner";
 import PostSection from "../Section/PostSection";
 import { Helmet } from "react-helmet";
 import Section1 from "./Section1";
-// import Section1 from "./Section";
+import Section2 from "./Section2";
 
 const Home = () => {
     const posts = useLoaderData()
@@ -34,6 +34,7 @@ const Home = () => {
 
             </section >
             <Section1></Section1>
+            <Section2></Section2>
         </div>
     );
 };
