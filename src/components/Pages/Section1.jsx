@@ -1,4 +1,5 @@
 import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Section1 = () => {
     return (
@@ -18,40 +19,38 @@ const Section1 = () => {
                         <p className="flex items-center gap-4"><FaArrowRight /> Social Connections</p>
                         <p className="flex items-center gap-4"><FaArrowRight />Improved Mental and Physical Health</p>
                         <p className="flex items-center gap-4"><FaArrowRight />Career Advancement</p>
-
                         <div className="card-actions my-4">
-                            <button className="btn bg-blue-400 w-full text-white">Buy Now</button>
+                            <Link to='/needvolunteer' className="btn bg-green-500 w-full text-white">Join Now</Link>
                         </div>
                     </div>
                 </div >
                 <div className="m-8 ">
                     <div className="w-96 bg-base-100 shadow-xl p-8 my-4">
-                        <h3 className="text-2xl font-bold">Excursions Included</h3>
+                        <h3 className="text-2xl font-bold font-mono">Social improvement</h3>
                         {/* <p ><span className="text-7xl font-bold">$50/</span> Day</p> */}
-                        <p className="flex items-center gap-4 mt-2"> <FaArrowRight /> Supports local communities</p>
-                        <p className="flex items-center gap-4"> <FaArrowRight />Sustains environments.</p>
-                        <p className="flex items-center gap-4"><FaArrowRight />Tourism preserves heritage.</p>
-                        <p className="flex items-center gap-4"><FaArrowRight /> Supports local businesses.</p>
-                        <p className="flex items-center gap-4"><FaArrowRight />Tourism enriches lives through exploration.</p>
-
+                        <p className="flex items-center gap-4 mt-2"> <FaArrowRight /> Addressing Inequality</p>
+                        <p className="flex items-center gap-4"> <FaArrowRight />Building Stronger Communities</p>
+                        <p className="flex items-center gap-4"><FaArrowRight />Promoting Social Justice</p>
+                        <p className="flex items-center gap-4"><FaArrowRight /> Creating Lasting Impact</p>
+                        <p className="flex items-center gap-4"><FaArrowRight />Fostering Empathy and Compassion</p>
                         <div className="card-actions my-4">
-                            <button className="btn bg-blue-400 w-full text-white">Buy Now</button>
+                            <Link to='/needvolunteer' className="btn bg-green-500 w-full text-white">Join Now</Link>
                         </div>
                     </div>
                 </div >
                 <div className="m-8 ">
                     <div className="w-96 bg-base-100 shadow-xl p-8 my-4">
-                        <h3 className="text-2xl font-bold">All Inclusive</h3>
-                        <p ><span className="text-7xl font-bold">$80/</span> Day</p>
-                        <p className="flex items-center gap-4 mt-2"><FaArrowRight /> Tourism drives economies.</p>
-                        <p className="flex items-center gap-4"><FaArrowRight /> Tourism shares cultures.</p>
-                        <p className="flex items-center gap-4"><FaArrowRight /> Tourism supports local communities.</p>
-                        <p className="flex items-center gap-4"><FaArrowRight /> Tourism sustains environments.</p>
-                        <p className="flex items-center gap-4"><FaArrowRight /> Tourism builds bridges between people.</p>
-                        <p className="flex items-center gap-4"><FaArrowRight /> Tourism shares cultures.</p>
+                        <h3 className="text-2xl font-bold font-mono">Health benefit</h3>
+                        {/* <p ><span className="text-7xl font-bold">$80/</span> Day</p> */}
+                        <p className="flex items-center gap-4 mt-2"><FaArrowRight /> Supporting Vulnerable Populations</p>
+                        <p className="flex items-center gap-4"><FaArrowRight /> Promoting Wellness and Disease Prevention</p>
+                        <p className="flex items-center gap-4"><FaArrowRight /> Building Healthcare Capacity</p>
+                        <p className="flex items-center gap-4"><FaArrowRight /> Fostering Personal Well-being</p>
+                        {/* <p className="flex items-center gap-4"><FaArrowRight /> Improving Public Health</p> */}
+                        {/* <p className="flex items-center gap-4"><FaArrowRight /> Tourism shares cultures.</p> */}
 
                         <div className="card-actions my-4">
-                            <button className="btn bg-blue-400 w-full text-white">Buy Now</button>
+                            <Link to='/needvolunteer' className="btn bg-green-500 w-full text-white">Join Now</Link>
                         </div>
                     </div>
                 </div >
