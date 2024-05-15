@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword,GoogleAuthProvider,GithubAuthProvider, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from "./firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null)
 const auth = getAuth(app)
@@ -31,13 +32,49 @@ const AuthProvider = ({ children }) => {
     }
 
     // check if the user is there or not (if user is there then loading is false)
+    // useEffect(() => {
+    //     const unsubscribe = onAuthStateChanged(auth, (user) => {
+    //         setUser(user)
+    //         setLoading(false)
+    //     });
+    //     return () => {
+    //         unsubscribe()
+    //     }
+    // }, [])
+
+    
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setUser(user)
-            setLoading(false)
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            const userEmail = currentUser?.email ;
+            const loggedUser = { email: userEmail };
+            
+            console.log('current user', currentUser);
+
+            
+            //if user exist then issue a token
+            if (currentUser) {
+                axios.post('https://volunteer-website-server.vercel.app/jwt', loggedUser, {
+                    withCredentials: true
+                })
+                    .then((res) => {
+                        setUser(currentUser);
+                        setLoading(false);
+                        console.log('token response', res.data)
+                    })
+            }
+            else{
+                setUser(null);
+                axios.post('https://volunteer-website-server.vercel.app/logout',loggedUser,{
+                    withCredentials:true
+                })
+                .then(res=>{
+                    setLoading(false);
+                    console.log(res.data)
+                })
+            }
         });
         return () => {
-            unsubscribe()
+             unsubscribe();
         }
     }, [])
 

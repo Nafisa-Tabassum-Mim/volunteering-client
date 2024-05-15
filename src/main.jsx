@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/post')
+        loader: () => fetch('https://volunteer-website-server.vercel.app/post')
       },
       {
         path: '/login',
@@ -44,12 +44,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/:id',
-        loader: ({ params }) => fetch(`http://localhost:5000/post/${params.id}`),
+        loader: ({ params }) => fetch(`https://volunteer-website-server.vercel.app/post/${params.id}`),
         element: <PrivateRoute><VolunteerDetails></VolunteerDetails></PrivateRoute>,
       },
       {
         path: '/needvolunteer',
-        loader: () => fetch('http://localhost:5000/post'),
+        loader: () => fetch('https://volunteer-website-server.vercel.app/post'),
         element: <PrivateRoute><NeedVolunteer></NeedVolunteer></PrivateRoute>,
       },
       {

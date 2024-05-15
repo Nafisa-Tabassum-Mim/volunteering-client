@@ -11,14 +11,17 @@ import { ToastContainer, toast } from "react-toastify"
 const VolunteerVacancy = () => {
     const { user } = useContext(AuthContext)
     const [posts, setPosts] = useState([])
-    const [startDate, setStartDate] = useState(new Date());
+    const [startDate, setStartDate] = useState(null);
 
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/post?organizer_email=${user?.email}`)
-            .then(res => res.json())
-            .then((data) => setPosts(data))
+        if (user?.email) {
+            const url = (`https://volunteer-website-server.vercel.app/post?organizer_email=${user?.email}`)
+            fetch(url, { credentials: 'include' })
+                .then(res => res.json())
+                .then((data) => setPosts(data))
+        }
     }, [user?.email])
 
     const handleDelete = (_id) => {
@@ -33,7 +36,7 @@ const VolunteerVacancy = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/post/${_id}`, {
+                fetch(`https://volunteer-website-server.vercel.app/post/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -46,10 +49,9 @@ const VolunteerVacancy = () => {
                                 'success'
                             )
                             const remaining = posts.filter(post => post._id !== _id);
-                            setPosts(remaining);
+                            setPosts(remaining)
                         }
                     })
-
             }
         })
     };
@@ -57,21 +59,20 @@ const VolunteerVacancy = () => {
 
     const handleUpdateCard = (e, _id) => {
         e.preventDefault();
-        // setStartDate(deadlinede)
         const form = e.target;
         const thumbnail = form.thumbnail.value;
         const post_title = form.post_title.value;
         const description = form.description.value;
         const category = form.category.value;
         const location = form.location.value;
-        const volunteers_needed = form.volunteers_needed.value;
+        const volunteers_needed = Number(form.volunteers_needed.value);
         const deadline = form.deadline.value;
         const organizer_name = form.organizer_name.value;
         const organizer_email = form.organizer_email.value;
 
         const updatePost = { thumbnail, post_title, description, category, location, volunteers_needed, deadline, organizer_name, organizer_email }
 
-        fetch(`http://localhost:5000/post/${_id}`, {
+        fetch(`https://volunteer-website-server.vercel.app/post/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -81,11 +82,8 @@ const VolunteerVacancy = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if (data.insertedId) {
-                    form.reset()
+                if (data.modifiedCount>0) {
                     toast.success('Your volunteer post is updated now!')
-                    // const remaining = posts.filter(post => post._id === _id);
-                    setPosts(updatePost);
                 }
             })
 
@@ -97,7 +95,6 @@ const VolunteerVacancy = () => {
             <div className="overflow-x-auto">
                 {
                     posts.length !== 0 ?
-                        // posts ?
                         (
                             <>
                                 <table className="table">
@@ -119,9 +116,7 @@ const VolunteerVacancy = () => {
                                                 <td>{post.category}</td>
                                                 <td>{post.location}</td>
                                                 <td className="px-2 py-4">
-                                                    {/* <Link className="text-white bg-green-500 p-2  rounded-xl hover:bg-blue-300 mr-2">Update</Link> */}
-                                                    {/* modal  */}
-                                                    {/* <div className="flex justify-center items-center py-6"> */}
+                                                   
                                                     <button className="text-white bg-green-500 p-2 rounded-xl hover:bg-green-300 mr-2" onClick={() => document.getElementById('my_modal_5').showModal()}>Update</button>
                                                     <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                                                         <div className="modal-box">
@@ -230,7 +225,6 @@ const VolunteerVacancy = () => {
                                                             </div>
                                                         </div>
                                                     </dialog >
-
                                                     <button onClick={() => handleDelete(post._id)} className="text-green-500 border-green-500 border-2 p-2 rounded-xl hover:bg-blue-200">Delete</button>
                                                 </td>
                                             </tr>

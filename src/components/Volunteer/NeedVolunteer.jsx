@@ -1,15 +1,47 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
 
 const NeedVolunteer = () => {
-    const posts = useLoaderData()
-    console.log(posts)
+    const allPost = useLoaderData()
+    const [posts, setPosts] = useState(allPost)
+    const [search, setSearch] = useState('')
+
+    const handleSearch = e => {
+        e.preventDefault()
+        const text = e.target.search.value
+        setSearch(text)
+    }
+
+    useEffect(() => {
+        const getData = async () => {
+            const { data } = await axios(`https://volunteer-website-server.vercel.app/post?search=${search}`)
+            setPosts(data)
+        }
+        getData()
+    }, [search])
+
+
     return (
         <div>
             <Helmet>
                 <title>Need Volunteer</title>
             </Helmet>
             <p className="text-3xl font-semibold text-center my-8">All needed volunteering <span className="text-[#808000] mr-2">posts</span></p>
+            {/* form  */}
+
+            <form onSubmit={handleSearch} className="flex justify-center items-center my-4">
+                <fieldset className="form-control w-80">
+                    <label className="label">
+                    </label>
+                    <div className="join">
+                        <input type="text" placeholder="Search by post title" name='search' className="input input-bordered join-item" />
+                        <button className="btn bg-[#808000] join-item text-white">Search</button>
+                    </div>
+                </fieldset>
+            </form>
+
 
             {posts.map((post) => (
                 <div key={post._id}>

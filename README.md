@@ -1,8 +1,13 @@
-# React + Vite
+## Website name - Youth Volunteer Foundation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live site URL- [firebase live link](https://tourism-9cf08.web.app/)
 
-Currently, two official plugins are available:
+## Website feature:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Category - Assignment 10
+- It is a volunteering website. People can post for volunteer where others can apply.
+- Who will post the volunteering can only update or delete their post. Others can't they can only apply.
+- You can take amazing volunteering project according to your interest and review our website.
+- Register to see more details about the volunteering. 
+- Login option - Email, Google, GitHub. Amazing user experience.
+

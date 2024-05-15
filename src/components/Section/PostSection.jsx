@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const PostSection = ({ post }) => {
     const { _id, thumbnail, post_title, category, deadline } = post
     // console.log(typeof _id)
-    console.log(_id)
+    // console.log(_id)
     return (
         <div >
             <div className="relative">

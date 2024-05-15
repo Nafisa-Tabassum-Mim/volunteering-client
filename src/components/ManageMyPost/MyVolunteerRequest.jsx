@@ -1,4 +1,4 @@
-import  { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from "sweetalert2";
 import { AuthContext } from '../firebase/AuthProvider';
@@ -6,12 +6,15 @@ import { AuthContext } from '../firebase/AuthProvider';
 
 const MyVolunteerRequest = () => {
     const [posts, setPosts] = useState([])
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/request?volunteer_email=${user.email}`)
-            .then(res => res.json())
-            .then((data) => setPosts(data))
+        if (user?.email) {
+            const url = (`https://volunteer-website-server.vercel.app/request?volunteer_email=${user.email}`)
+            fetch(url, { credentials: 'include' })
+                .then(res => res.json())
+                .then((data) => setPosts(data))
+        }
     }, [user?.email])
 
     const handleDelete = (_id) => {
@@ -26,7 +29,7 @@ const MyVolunteerRequest = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/request/${_id}`, {
+                fetch(`https://volunteer-website-server.vercel.app/request/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -49,34 +52,34 @@ const MyVolunteerRequest = () => {
 
     return (
         <div>
-        <div className="overflow-x-auto">
-            {
-                posts.length !== 0 ?
-                // posts ?
-                    (
-                        <>
-                            <table className="table">
-                                <caption className="text-lg md:text-2xl text-center font-semibold my-8 font-mono">My Volunteer request post</caption>
+            <div className="overflow-x-auto">
+                {
+                    posts.length !== 0 ?
+                        // posts ?
+                        (
+                            <>
+                                <table className="table">
+                                    <caption className="text-lg md:text-2xl text-center font-semibold my-8 font-mono">My Volunteer request post</caption>
 
-                                {/* head */}
-                                <thead>
-                                    <tr className='text-medium md:text-lg font-mono'>
-                                        <th>Post Title</th>
-                                        <th>Category</th>
-                                        <th>Location</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {posts.map((post) => (
-                                        <tr key={post._id} className='text-medium md:text-lg font-mono'>
-                                            <td>{post.post_title}</td>
-                                            <td>{post.category}</td>
-                                            <td>{post.location}</td>
-                                            <td className="px-2 py-4">
-                          
+                                    {/* head */}
+                                    <thead>
+                                        <tr className='text-medium md:text-lg font-mono'>
+                                            <th>Post Title</th>
+                                            <th>Category</th>
+                                            <th>Location</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {posts.map((post) => (
+                                            <tr key={post._id} className='text-medium md:text-lg font-mono'>
+                                                <td>{post.post_title}</td>
+                                                <td>{post.category}</td>
+                                                <td>{post.location}</td>
+                                                <td className="px-2 py-4">
 
-                                            <button onClick={() => handleDelete(post._id)} className="text-green-500 border-green-500 border-2 p-2 rounded-xl hover:bg-red-500 hover:text-white">Cancel</button>
+
+                                                    <button onClick={() => handleDelete(post._id)} className="text-green-500 border-green-500 border-2 p-2 rounded-xl hover:bg-red-500 hover:text-white">Cancel</button>
                                                 </td>
                                             </tr>
                                         ))}

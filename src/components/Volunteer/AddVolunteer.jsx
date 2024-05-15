@@ -11,7 +11,7 @@ const AddVolunteer = () => {
 
     const [startDate, setStartDate] = useState(new Date());
     const { user } = useContext(AuthContext)
-    console.log(user)
+    // console.log(user)
 
     const handleAddVolunteer = event => {
         event.preventDefault();
@@ -23,7 +23,7 @@ const AddVolunteer = () => {
         const description = form.description.value;
         const category= form.category.value;
         const location = form.location.value;
-        const volunteers_needed = form.volunteers_needed.value;
+        const volunteers_needed = Number(form.volunteers_needed.value);
         const deadline = form.deadline.value;
         const organizer_name = form.organizer_name.value;
         const organizer_email = form.organizer_email.value;
@@ -32,7 +32,7 @@ const AddVolunteer = () => {
 
 
         // send data to the server
-        fetch('http://localhost:5000/post', {
+        fetch('https://volunteer-website-server.vercel.app/post', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

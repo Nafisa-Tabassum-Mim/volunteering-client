@@ -108,10 +108,10 @@ const Register = () => {
                         <img src="https://i.ibb.co/vjqWr7Y/importance-of-community-service-1200-1200x794.jpg" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                        <img src="https://i.ibb.co/xDTDMT2/istockphoto-1188864563-612x612-1.jpg" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+                        <img src="https://i.ibb.co/GW3rM77/depositphotos-190921584-stock-photo-group-of-volunteers-making-high.webp" />
                     </SwiperSlide>
 
                 </Swiper>

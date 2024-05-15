@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useContext } from "react";
+import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../firebase/AuthProvider";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from "react-toastify"
@@ -8,9 +8,8 @@ import { Helmet } from "react-helmet";
 
 const VolunteerDetails = () => {
     const post = useLoaderData()
-    console.log(post)
 
-    const { thumbnail, post_title, description, category, location, volunteers_needed, deadline, organizer_name, organizer_email } = post
+    const { _id, thumbnail, post_title, description, category, location, volunteers_needed, deadline, organizer_name, organizer_email } = post
 
     const { user } = useContext(AuthContext)
 
@@ -24,7 +23,7 @@ const VolunteerDetails = () => {
         const description = form.description.value;
         const category = form.category.value;
         const location = form.location.value;
-        const volunteers_needed = form.volunteers_needed.value;
+        const volunteers_needed = Number(form.volunteers_needed.value)
         const deadline = form.deadline.value;
         const organizer_name = form.organizer_name.value;
         const organizer_email = form.organizer_email.value;
@@ -36,7 +35,7 @@ const VolunteerDetails = () => {
         const newRequest = { thumbnail, post_title, description, category, location, volunteers_needed, deadline, organizer_name, organizer_email, volunteer_name, volunteer_email, suggestion, status }
 
         // send data to the server
-        fetch('http://localhost:5000/request', {
+        fetch('https://volunteer-website-server.vercel.app/request', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -49,16 +48,35 @@ const VolunteerDetails = () => {
                 if (data.insertedId) {
                     form.reset()
                     toast.success('Your Request has been submitted')
+
+                    fetch(`https://volunteer-website-server.vercel.app/post/${_id}`, {
+                        method: 'PATCH',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify({ volunteers_needed: volunteers_needed })
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            if (data.insertedId) {
+                                // form.reset()
+                                // toast.success('Your Request has been submitted')
+                            }
+                        })
                 }
             })
-    }
 
+
+
+    }
 
     return (
         <div >
             <Helmet>
                 <title>Volunteer post details</title>
             </Helmet>
+
             <h3 className="text-5xl font-semibold font-serif text-center my-4 mx-2">Yolunteer post details</h3>
             <div className="flex justify-center md:gap-10 my-6 items-center mx-4">
                 <h3 className="text-3xl font-semibold font-mono">
