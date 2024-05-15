@@ -11,7 +11,7 @@ import { ToastContainer, toast } from "react-toastify"
 const VolunteerVacancy = () => {
     const { user } = useContext(AuthContext)
     const [posts, setPosts] = useState([])
-    const [startDate, setStartDate] = useState(null);
+    const [startDate, setStartDate] = useState(new Date());
 
 
 
