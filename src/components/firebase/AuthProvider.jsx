@@ -31,17 +31,6 @@ const AuthProvider = ({ children }) => {
         return signOut(auth)
     }
 
-    // check if the user is there or not (if user is there then loading is false)
-    // useEffect(() => {
-    //     const unsubscribe = onAuthStateChanged(auth, (user) => {
-    //         setUser(user)
-    //         setLoading(false)
-    //     });
-    //     return () => {
-    //         unsubscribe()
-    //     }
-    // }, [])
-
     
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
