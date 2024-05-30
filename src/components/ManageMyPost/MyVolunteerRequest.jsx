@@ -2,11 +2,21 @@ import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from "sweetalert2";
 import { AuthContext } from '../firebase/AuthProvider';
+// print 
+import { useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
+import { IoIosPrint } from 'react-icons/io';
 
+// import { ComponentToPrint } from './ComponentToPrint';
 
 const MyVolunteerRequest = () => {
     const [posts, setPosts] = useState([])
     const { user } = useContext(AuthContext)
+    // extra 
+    const componentRef = useRef();
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+    });
 
     useEffect(() => {
         if (user?.email) {
@@ -51,8 +61,8 @@ const MyVolunteerRequest = () => {
     };
 
     return (
-        <div>
-            <div className="overflow-x-auto">
+        <div ref={componentRef}>
+            <div  className="overflow-x-auto">
                 {
                     posts.length !== 0 ?
                         // posts ?
@@ -95,6 +105,11 @@ const MyVolunteerRequest = () => {
 
                 }
             </div>
+            <div className="flex justify-end m-8">
+            <button className='btn bg-red-500  text-white flex items-center' onClick={handlePrint}>
+                Print my volunteering work!<IoIosPrint />
+            </button>
+        </div>
         </div>
 
     );
